@@ -1,19 +1,20 @@
-// CustomerAdapter.java
-package com.example.rentalmanagementsystem;
+package com.example.rentalmanagementsystem.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.rentalmanagementsystem.util.DatabaseHelper;
+import com.example.rentalmanagementsystem.Entities.Customer;
+import com.example.rentalmanagementsystem.R;
 
 import java.util.List;
 
@@ -21,12 +22,12 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
 
     private Context context;
     private List<Customer> customerList;
-    private DatabaseHelper db;
+    private DatabaseHelper dbHelper;
 
     public CustomerAdapter(Context context, List<Customer> customerList) {
         this.context = context;
         this.customerList = customerList;
-        this.db = new DatabaseHelper(context);
+        dbHelper = new DatabaseHelper(context);
     }
 
     @NonNull
@@ -46,7 +47,10 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
         holder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteCustomer(customer, position);
+                deleteCustomer(customer.getId());
+                customerList.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, customerList.size());
             }
         });
     }
@@ -56,7 +60,13 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
         return customerList.size();
     }
 
-    public class CustomerViewHolder extends RecyclerView.ViewHolder {
+    private void deleteCustomer(int id) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.delete("customers", "id=?", new String[]{String.valueOf(id)});
+    }
+
+    public static class CustomerViewHolder extends RecyclerView.ViewHolder {
+
         TextView tvName, tvPhone, tvEmail;
         Button btnDelete;
 
@@ -66,18 +76,6 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
             tvPhone = itemView.findViewById(R.id.tvPhone);
             tvEmail = itemView.findViewById(R.id.tvEmail);
             btnDelete = itemView.findViewById(R.id.btnDelete);
-        }
-    }
-
-    private void deleteCustomer(Customer customer, int position) {
-        SQLiteDatabase database = db.getWritableDatabase();
-        int rowsDeleted = database.delete("customers", "id=?", new String[]{String.valueOf(customer.getId())});
-        if (rowsDeleted > 0) {
-            customerList.remove(position);
-            notifyItemRemoved(position);
-            Toast.makeText(context, "Customer deleted", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, "Error deleting customer", Toast.LENGTH_SHORT).show();
         }
     }
 }

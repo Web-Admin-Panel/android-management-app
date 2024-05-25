@@ -14,7 +14,7 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,20 +24,20 @@
 
         <!-- Add this entry for ManageCustomersActivity -->
         <activity
-            android:name=".ManageCustomersActivity"
+            android:name=".Activities.ManageCustomersActivity"
             android:exported="true">
         </activity>
 
-        <!-- Add similar entries for other activities like ManageEmployeesActivity and ManageApartmentsActivity -->
-<!--        <activity-->
-<!--            android:name=".ManageEmployeesActivity"-->
-<!--            android:exported="true">-->
-<!--        </activity>-->
+<!--         Add similar entries for other activities like ManageEmployeesActivity and ManageApartmentsActivity -->
+        <activity
+            android:name=".Activities.ManageEmployeesActivity"
+            android:exported="true">
+        </activity>
 
-<!--        <activity-->
-<!--            android:name=".ManageApartmentsActivity"-->
-<!--            android:exported="true">-->
-<!--        </activity>-->
+        <activity
+            android:name=".Activities.ManageApartmentsActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>

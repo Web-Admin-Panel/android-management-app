@@ -1,4 +1,4 @@
-package com.example.rentalmanagementsystem;
+package com.example.rentalmanagementsystem.util;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

@@ -10,11 +10,11 @@
         android:id="@+id/tvMainHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Customers"
-        android:textSize="24sp"
-        android:textStyle="bold"
         android:gravity="center"
-        android:paddingBottom="16dp" />
+        android:paddingBottom="16dp"
+        android:text="Employees"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/edtName"
@@ -37,17 +37,24 @@
         android:hint="Email"
         android:inputType="textEmailAddress" />
 
+    <EditText
+        android:id="@+id/edtPosition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Position"
+        android:inputType="text" />
+
     <Button
         android:id="@+id/btnAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Customer" />
+        android:text="Add Employee" />
 
     <Button
         android:id="@+id/btnView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="View Customers" />
+        android:text="View Employees" />
 
     <!-- Column Headers -->
     <LinearLayout
@@ -82,6 +89,15 @@
             android:layout_weight="1"
             android:padding="8dp"
             android:text="Email"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:text="Position"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
 

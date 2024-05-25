@@ -1,4 +1,4 @@
-package com.example.rentalmanagementsystem;
+package com.example.rentalmanagementsystem.Activities;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -13,13 +13,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
+import com.example.rentalmanagementsystem.Entities.Customer;
+import com.example.rentalmanagementsystem.Adapters.CustomerAdapter;
+import com.example.rentalmanagementsystem.util.DatabaseHelper;
+import com.example.rentalmanagementsystem.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ManageCustomersActivity extends AppCompatActivity {
 
     private EditText edtName, edtPhone, edtEmail;
-    private Button btnAdd, btnView;
+    private Button btnAdd, btnView, btnGenerateTestData;
     private DatabaseHelper db;
     private RecyclerView recyclerViewCustomers;
     private CustomerAdapter customerAdapter;
@@ -35,7 +41,7 @@ public class ManageCustomersActivity extends AppCompatActivity {
         edtEmail = findViewById(R.id.edtEmail);
         btnAdd = findViewById(R.id.btnAdd);
         btnView = findViewById(R.id.btnView);
-        recyclerViewCustomers = findViewById(R.id.recyclerViewCustomers);
+        recyclerViewCustomers = findViewById(R.id.recyclerViewEmployees);
 
         db = new DatabaseHelper(this);
         customerList = new ArrayList<>();
@@ -43,6 +49,7 @@ public class ManageCustomersActivity extends AppCompatActivity {
         recyclerViewCustomers.setLayoutManager(new LinearLayoutManager(this));
         customerAdapter = new CustomerAdapter(this, customerList);
         recyclerViewCustomers.setAdapter(customerAdapter);
+        viewCustomers(); // Refresh the customer list
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +64,13 @@ public class ManageCustomersActivity extends AppCompatActivity {
                 viewCustomers();
             }
         });
+
+//        btnGenerateTestData.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                generateTestData();
+//            }
+//        });
     }
 
     private void addCustomer() {
@@ -79,6 +93,7 @@ public class ManageCustomersActivity extends AppCompatActivity {
                 edtName.setText("");
                 edtPhone.setText("");
                 edtEmail.setText("");
+                viewCustomers(); // Refresh the customer list
             } else {
                 Toast.makeText(this, "Error adding customer", Toast.LENGTH_SHORT).show();
             }
@@ -86,6 +101,7 @@ public class ManageCustomersActivity extends AppCompatActivity {
     }
 
     private void viewCustomers() {
+        // Function to display the list of customers, or to refresh existing list
         customerList.clear();
         SQLiteDatabase database = db.getReadableDatabase();
         Cursor cursor = database.query("customers", null, null, null, null, null, null);
@@ -104,4 +120,5 @@ public class ManageCustomersActivity extends AppCompatActivity {
 
         customerAdapter.notifyDataSetChanged();
     }
+
 }
