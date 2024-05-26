@@ -16,10 +16,10 @@
         <activity
             android:name=".Activities.MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
 
         <!-- Add this entry for ManageCustomersActivity -->
@@ -38,6 +38,16 @@
             android:name=".Activities.ManageApartmentsActivity"
             android:exported="true">
         </activity>
+
+        <activity
+            android:name=".Activities.LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
