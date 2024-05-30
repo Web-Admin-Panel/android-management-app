@@ -10,7 +10,7 @@
         android:id="@+id/btnGenerateTestData"
         android:layout_width="219dp"
         android:layout_height="38dp"
-        android:layout_marginTop="315dp"
+        android:layout_marginTop="616dp"
         android:text="_Generate Test Data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Apartment Rental Management System"
+        android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,32 +30,45 @@
 
     <Button
         android:id="@+id/btnCustomers"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="139dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="76dp"
         android:text="Manage Customers"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.741"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title" />
 
     <Button
         android:id="@+id/btnEmployees"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="141dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="152dp"
         android:text="Manage Employees"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnCustomers" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnApartments"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="142dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="24dp"
         android:text="Manage Apartments"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.223"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnEmployees" />
+
+    <Button
+        android:id="@+id/btnManageAdmins"
+        android:layout_width="139dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="232dp"
+        android:text="Manage Admins"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.742"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

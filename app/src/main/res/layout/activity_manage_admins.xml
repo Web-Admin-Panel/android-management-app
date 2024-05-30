@@ -10,52 +10,38 @@
         android:id="@+id/tvMainHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Customers"
+        android:text="Admins"
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
         android:paddingBottom="16dp" />
 
     <EditText
-        android:id="@+id/edtName"
+        android:id="@+id/edtUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/edtPhone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Phone"
-        android:inputType="phone" />
-
-    <EditText
-        android:id="@+id/edtEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress" />
-
-    <EditText
-        android:id="@+id/edtPass"
-        android:layout_width="381dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Password"
+        android:hint="Username"
         android:inputType="text" />
 
-    <Button
-        android:id="@+id/btnAdd"
+    <EditText
+        android:id="@+id/edtPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Customer" />
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/edtLevel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Admin Level"
+        android:inputType="number" />
 
     <Button
-        android:id="@+id/btnView"
+        android:id="@+id/btnAddAdmin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="View Customers" />
+        android:text="Add Admin" />
 
     <!-- Column Headers -->
     <LinearLayout
@@ -71,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="8dp"
-            android:text="Name"
+            android:text="Username"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
 
@@ -80,16 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="8dp"
-            android:text="Phone"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="8dp"
-            android:text="Email"
+            android:text="Admin Level"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
 
@@ -103,9 +80,9 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewEmployees"
-        android:layout_width="377dp"
-        android:layout_height="266dp"
+        android:id="@+id/recyclerViewAdmins"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:paddingTop="8dp" />
 </LinearLayout>

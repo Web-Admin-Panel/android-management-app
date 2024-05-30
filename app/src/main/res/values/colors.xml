@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#FF3F7CA1</color>
+    <color name="calculateBtnColor">#FF3F7CA1</color>
+    <color name="payNowButton">#FF4CAF50</color>
+    <color name="resultTextColor">#FFF57C00</color>
+    <color name="gray">#989898</color>
 </resources>

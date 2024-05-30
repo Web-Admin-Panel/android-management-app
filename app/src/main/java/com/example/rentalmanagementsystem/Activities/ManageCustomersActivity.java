@@ -24,7 +24,7 @@ import java.util.List;
 
 public class ManageCustomersActivity extends AppCompatActivity {
 
-    private EditText edtName, edtPhone, edtEmail;
+    private EditText edtName, edtPhone, edtEmail, edtPass;
     private Button btnAdd, btnView, btnGenerateTestData;
     private DatabaseHelper db;
     private RecyclerView recyclerViewCustomers;
@@ -37,6 +37,7 @@ public class ManageCustomersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_manage_customers);
 
         edtName = findViewById(R.id.edtName);
+        edtPass = findViewById(R.id.edtPass);
         edtPhone = findViewById(R.id.edtPhone);
         edtEmail = findViewById(R.id.edtEmail);
         btnAdd = findViewById(R.id.btnAdd);
@@ -77,6 +78,7 @@ public class ManageCustomersActivity extends AppCompatActivity {
         String name = edtName.getText().toString();
         String phone = edtPhone.getText().toString();
         String email = edtEmail.getText().toString();
+        String pswd = edtPass.getText().toString();
 
         if (name.isEmpty() || phone.isEmpty() || email.isEmpty()) {
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
@@ -86,6 +88,8 @@ public class ManageCustomersActivity extends AppCompatActivity {
             values.put("name", name);
             values.put("phone", phone);
             values.put("email", email);
+            values.put("password", pswd);
+
 
             long id = database.insert("customers", null, values);
             if (id > 0) {
@@ -93,6 +97,7 @@ public class ManageCustomersActivity extends AppCompatActivity {
                 edtName.setText("");
                 edtPhone.setText("");
                 edtEmail.setText("");
+                edtPass.setText("");
                 viewCustomers(); // Refresh the customer list
             } else {
                 Toast.makeText(this, "Error adding customer", Toast.LENGTH_SHORT).show();

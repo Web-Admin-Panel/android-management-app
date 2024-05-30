@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:fitsSystemWindows="true"
+    android:id="@+id/main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.CustomerMainActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:background="@color/colorPrimary"
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:title="Bill Calculator"
+        app:titleTextColor="@android:color/white"
+        app:backgroundTint="?attr/colorPrimary" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="32dp">
+
+            <TextView
+                android:paddingTop="8dp"
+                android:layout_marginStart="4dp"
+                android:textSize="17sp"
+                android:id="@+id/bill_type_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bill Type:"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Spinner
+                android:padding="8dp"
+                android:foreground="@drawable/edittext_background"
+                android:id="@+id/bill_type_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/bill_type_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.5" />
+
+            <TextView
+                android:textSize="17sp"
+                android:layout_marginStart="4dp"
+                android:id="@+id/stay_duration_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stay duration:"
+                app:layout_constraintTop_toBottomOf="@id/bill_type_spinner"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="32dp" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:padding="12dp"
+                android:background="@drawable/edittext_background"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:textSize="16sp"
+                android:hint="Enter duration :"
+                android:id="@+id/stay_duration_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/stay_duration_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/interval_type_spinner"
+                app:layout_constraintEnd_toEndOf="parent"
+                 />
+
+            <Spinner
+                android:padding="8dp"
+                android:foreground="@drawable/edittext_background"
+                android:id="@+id/interval_type_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/stay_duration_edit_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.4"
+                app:layout_constraintTop_toBottomOf="@id/stay_duration_label"
+                app:layout_constraintTop_toTopOf="@id/stay_duration_edit_text"
+                app:layout_constraintBottom_toBottomOf="@id/stay_duration_edit_text" />
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                app:layout_constraintTop_toBottomOf="@id/interval_type_spinner"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="32dp"
+                android:background="@color/gray"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                app:cornerRadius="24dp"
+                android:padding="14dp"
+                android:enabled="false"
+                android:id="@+id/calculate_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Calculate"
+                app:backgroundTint="@color/calculateBtnColor"
+                app:layout_constraintTop_toBottomOf="@id/divider1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:visibility="gone"
+                android:textColor="@color/resultTextColor"
+                android:id="@+id/cost_per_month_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cost Per Month - $0 TL"
+                app:layout_constraintTop_toBottomOf="@id/calculate_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:visibility="gone"
+                android:textColor="@color/resultTextColor"
+                android:id="@+id/total_cost_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Bill - $0 TL"
+                app:layout_constraintTop_toBottomOf="@id/cost_per_month_text_view"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
+                android:textAlignment="center" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                app:layout_constraintTop_toBottomOf="@id/total_cost_text_view"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
+                android:background="@color/gray"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                app:cornerRadius="24dp"
+                android:padding="14dp"
+                android:enabled="false"
+                android:id="@+id/pay_now_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:text="Pay Now"
+                app:backgroundTint="@color/payNowButton"
+                app:layout_constraintTop_toBottomOf="@id/divider2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

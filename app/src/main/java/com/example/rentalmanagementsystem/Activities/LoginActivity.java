@@ -14,14 +14,13 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.rentalmanagementsystem.R;
+import com.example.rentalmanagementsystem.util.DatabaseHelper;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText username, password;
     Button btnLogin;
-
-    String CORRECT_USERNAME = "admin";
-    String CORRECT_PASSWORD = "12345";
+    DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,20 +33,29 @@ public class LoginActivity extends AppCompatActivity {
             return insets;
         });
 
+        dbHelper = new DatabaseHelper(this);
+
         username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
+        password = findViewById(R.id.edtPass);
         btnLogin = findViewById(R.id.loginButton);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String user = username.getText().toString();
+                String pass = password.getText().toString();
+
                 // Validate input
-                if (TextUtils.isEmpty(username.getText().toString()) || TextUtils.isEmpty(password.getText().toString())) {
-                    Toast.makeText(LoginActivity.this, "EMPTY", Toast.LENGTH_LONG).show();
-                } else if (username.getText().toString().equals(CORRECT_USERNAME) && password.getText().toString().equals(CORRECT_PASSWORD)) {
+                if (TextUtils.isEmpty(user) || TextUtils.isEmpty(pass)) {
+                    Toast.makeText(LoginActivity.this, "Fields cannot be empty", Toast.LENGTH_LONG).show();
+                } else if (dbHelper.validateAdmin(user, pass)) {
                     Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                } else {
+                } else if (dbHelper.validateCustomer(user, pass)) {
+                    Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(LoginActivity.this, CustomerMainActivity.class));
+                }
+                else {
                     Toast.makeText(LoginActivity.this, "Invalid credentials", Toast.LENGTH_LONG).show();
                 }
             }

@@ -24,6 +24,7 @@ public class TestCustomers {
             values.put("name", NAMES[random.nextInt(NAMES.length)]);
             values.put("phone", PHONES[random.nextInt(PHONES.length)]);
             values.put("email", EMAILS[random.nextInt(EMAILS.length)]);
+            values.put("password", 1234);
             customerList.add(values);
         }
 
