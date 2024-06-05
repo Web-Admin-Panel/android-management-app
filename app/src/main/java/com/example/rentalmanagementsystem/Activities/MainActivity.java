@@ -14,7 +14,7 @@ import com.example.rentalmanagementsystem.tests.*;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnCustomers, btnEmployees, btnApartments, btnGenerateTestData, btnManageAdmins;
+    private Button btnCustomers, btnEmployees, btnApartments, btnManageAdmins;
     private DatabaseHelper db;
 
     @Override
@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         btnApartments = findViewById(R.id.btnApartments);
         btnManageAdmins = findViewById(R.id.btnManageAdmins);
 
-        btnGenerateTestData = findViewById(R.id.btnGenerateTestData);
 
         db = new DatabaseHelper(this);
 
@@ -56,13 +55,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, ManageAdminsActivity.class));
-            }
-        });
-
-        btnGenerateTestData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                generateTestData();
             }
         });
     }

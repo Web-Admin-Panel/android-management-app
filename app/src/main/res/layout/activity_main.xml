@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Activities.MainActivity">
 
-    <Button
-        android:id="@+id/btnGenerateTestData"
-        android:layout_width="219dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="616dp"
-        android:text="_Generate Test Data"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
